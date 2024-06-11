@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  ruby_project_builder:
+    build:
+      context: .
+    container_name: ruby_project_builder
+    volumes:
+      - .:/app
