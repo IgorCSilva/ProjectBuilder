@@ -2,7 +2,7 @@
 
 Create projects ready to run and develop.
 
-## How to create a ruby project
+## How to create ruby projects
 
 ### A simple ruby project
 
