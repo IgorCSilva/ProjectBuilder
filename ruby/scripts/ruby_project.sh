@@ -52,11 +52,15 @@ PASCAL_PROJECT_NAME=$(snake_to_pascal "$project_name")
 
 PROJECT_NAME=$project_name
 
-# Create the Ruby project using Bundler
-bundle gem ../projects/$PROJECT_NAME
 
 # Navigate into the project directory
-cd ../projects/$PROJECT_NAME || exit
+cd ../projects || exit
+
+# Create the Ruby project using Bundler
+bundle gem $PROJECT_NAME
+
+# Navigate into the project directory
+cd $PROJECT_NAME || exit
 
 # Create Dockerfile
 cat <<EOL > Dockerfile
