@@ -14,7 +14,7 @@ PROJECT_NAME=$project_name
 cd ../projects || exit
 
 # Create the rails project
-rails new $PROJECT_NAME
+rails new $PROJECT_NAME --api
 
 # Navigate into the project directory
 cd $PROJECT_NAME || exit
@@ -26,7 +26,6 @@ FROM ruby:3.3.1
 
 RUN apt-get update -yqq \\
   && apt-get install -yqq --no-install-recommends \\
-    nodejs \\
     libqt5webkit5-dev \\
   && apt-get -q clean \\
   && rm -rf /var/lib/apt/lists
@@ -35,9 +34,6 @@ WORKDIR /app
 COPY Gemfile* ./
 RUN bundle install
 COPY . .
-
-# Precompile assets for production
-# RUN bundle exec rake assets:precompile
 
 # Specify the command to run the application
 CMD ["rails", "server", "-b", "0.0.0.0"]
